@@ -21,7 +21,7 @@
 package org.car2x.veins.nodes;
 
 import org.car2x.veins.base.modules.*;
-import org.car2x.veins.modules.nic.Nic80211p;
+import org.car2x.veins.modules.nic.WirelessNic;
 
 module Car
 {
@@ -37,7 +37,7 @@ module Car
                 @display("p=60,50");
         }
 
-        nic: <nicType> like org.car2x.veins.modules.nic.IWirelessNic {
+        nic: WirelessNic {
             parameters:
                 @display("p=60,166");
         }
