@@ -37,7 +37,7 @@ module Car
                 @display("p=60,50");
         }
 
-        nic: <nicType> like org.car2x.veins.modules.nic.INic80211p {
+        nic: <nicType> like org.car2x.veins.modules.nic.IWirelessNic {
             parameters:
                 @display("p=60,166");
         }
