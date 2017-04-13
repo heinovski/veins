@@ -21,7 +21,7 @@
 package org.car2x.veins.nodes;
 
 import org.car2x.veins.base.modules.*;
-import org.car2x.veins.modules.nic.OneRadioNic;
+import org.car2x.veins.modules.nic.OneRadioWirelessNic;
 
 module Car
 {
@@ -36,7 +36,7 @@ module Car
                 @display("p=60,50");
         }
 
-        nic: OneRadioNic {
+        nic: OneRadioWirelessNic {
             parameters:
                 @display("p=60,166");
         }

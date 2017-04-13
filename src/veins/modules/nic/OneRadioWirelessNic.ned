@@ -28,7 +28,7 @@ package org.car2x.veins.modules.nic;
 // @see IWirelessMac
 // @see IWirelessPhy
 //
-module OneRadioNic like IWirelessNic
+module OneRadioWirelessNic like IWirelessNic
 {
     parameters:
         string phyType = default("PhyLayer80211p"); // type of physical layer
