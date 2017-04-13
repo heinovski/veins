@@ -208,7 +208,7 @@ void BaseWaveApplLayer::handleParkingUpdate(cObject* obj) {
         }
         else {
             Coord pos = mobility->getCurrentPosition();
-            (FindModule<BaseConnectionManager*>::findGlobalModule())->registerNic(this->getParentModule()->getSubmodule("nic"), (ChannelAccess*) this->getParentModule()->getSubmodule("nic")->getSubmodule("phy80211p"), &pos);
+            (FindModule<BaseConnectionManager*>::findGlobalModule())->registerNic(this->getParentModule()->getSubmodule("nic"), (ChannelAccess*) this->getParentModule()->getSubmodule("nic")->getSubmodule("phy"), &pos);
         }
     }
 }
