@@ -96,6 +96,12 @@ double Obstacle::calculateAttenuation(const Coord& senderPos, const Coord& recei
 	// if obstacles has neither borders nor matter: bail.
 	if (getShape().size() < 2) return 1;
 
+	/* FIXME
+	 * If the transmission line between sender and receiver goes exactly through the intersection of two walls,
+	 * this code adds the affected walls to the set of intersections.
+	 * Afterwards, the wall at which the beam leaves the obstacle will also be added to the set of intersections.
+	 * Hence, we have an odd amount of affected walls which will cause an assertion error below.
+	 */
 	// get a list of points (in [0, 1]) along the line between sender and receiver where the beam intersects with this obstacle
 	std::multiset<double> intersectAt;
 	bool doesIntersect = false;
@@ -125,7 +131,12 @@ double Obstacle::calculateAttenuation(const Coord& senderPos, const Coord& recei
 	// for distance calculation, make sure every other pair of points marks transition through matter and void, respectively.
 	if (senderInside) intersectAt.insert(0);
 	if (receiverInside) intersectAt.insert(1);
-	ASSERT((intersectAt.size() % 2) == 0);
+
+	// TODO replace again with ASSERT((intersectAt.size() % 2) == 0);
+	if ((intersectAt.size() % 2) != 0) {
+	    std::cerr << "Something went wrong during obstacle calculation!" << endl;
+	    return 1;
+	}
 
 	// sum up distances in matter.
 	double fractionInObstacle = 0;
