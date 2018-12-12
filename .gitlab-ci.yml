@@ -1,0 +1,10 @@
+image: alpine:latest
+
+build:
+  stage: build
+  tags:
+    - shared
+  before_script:
+    - apt update && apt -y install python build-essential autoconf libtool libprotobuf-dev protobuf-compiler libzmq3-dev libsqlite3-dev
+  script:
+    - echo "Hello World"
