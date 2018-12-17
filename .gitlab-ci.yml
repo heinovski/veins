@@ -1,4 +1,4 @@
-image: alpine:latest
+image: hub.cs.upb.de/dbuse/veins-evi-deployment/veins_dep:opp5.2.1-sumo0.30.0
 
 before_script:
   - apk update
