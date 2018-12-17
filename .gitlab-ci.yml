@@ -1,10 +1,13 @@
 image: alpine:latest
 
+before_script:
+  - apk update
+  - apk add python build-essential autoconf libtool libprotobuf-dev protobuf-compiler libzmq3-dev libsqlite3-dev
+
 build:
   stage: build
   tags:
     - shared
-  before_script:
-    - apt update && apt -y install python build-essential autoconf libtool libprotobuf-dev protobuf-compiler libzmq3-dev libsqlite3-dev
   script:
-    - echo "Hello World"
+    - ./configure
+    - make
