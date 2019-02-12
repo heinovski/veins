@@ -1,0 +1,13 @@
+image: hub.cs.upb.de/dbuse/veins-evi-deployment/veins_dep:opp5.2.1-sumo0.30.0
+
+before_script:
+  - apk update
+  - apk add python build-essential autoconf libtool libprotobuf-dev protobuf-compiler libzmq3-dev libsqlite3-dev
+
+build:
+  stage: build
+  tags:
+    - shared
+  script:
+    - ./configure
+    - make
